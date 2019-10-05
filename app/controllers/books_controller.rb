@@ -15,6 +15,7 @@ class BooksController < ApplicationController
   # GET /books/new
   def new
     @book = Book.new
+    # book.cover.attach(params[:cover])
   end
 
   # GET /books/1/edit
@@ -69,6 +70,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:isbn, :title, :author, :language, :published, :edition, :associated_library, :subject, :summary, :special)
+      params.require(:book).permit(:isbn, :title, :author, :language, :published, :edition, :associated_library, :subject, :summary, :cover, :special)
     end
 end

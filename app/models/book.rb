@@ -8,4 +8,6 @@ validates :summary,
 validates :isbn,
     :presence => true,
     :uniqueness => true
+has_one_attached :cover
+
 end
