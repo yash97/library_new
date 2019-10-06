@@ -5,6 +5,18 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     @books = Book.all
+    @books = Book.all
+    if params[:search]
+      @books = Book.search(params[:search]).order("created_at DESC")
+    elsif params[:search1]
+      @books = Book.search1(params[:search1]).order("created_at DESC")
+    elsif params[:search2]
+      @books = Book.search2(params[:search2]).order("created_at DESC")
+    elsif params[:search3]
+      @books = Book.search3(params[:search3]).order("created_at DESC")
+    else
+      @books = Book.all.order('created_at DESC')
+    end
   end
 
   # GET /books/1
