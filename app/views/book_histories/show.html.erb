@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Issue date:</strong>
+  <%= @book_history.issue_date %>
+</p>
+
+<p>
+  <strong>Return date:</strong>
+  <%= @book_history.return_date %>
+</p>
+
+<p>
+  <strong>Is checked out:</strong>
+  <%= @book_history.is_checked_out %>
+</p>
+
+<p>
+  <strong>On hold:</strong>
+  <%= @book_history.on_hold %>
+</p>
+
+<p>
+  <strong>Fine amt:</strong>
+  <%= @book_history.fine_amt %>
+</p>
+
+<p>
+  <strong>Is approved:</strong>
+  <%= @book_history.is_approved %>
+</p>
+
+<%= link_to 'Edit', edit_book_history_path(@book_history) %> |
+<%= link_to 'Back', book_histories_path %>

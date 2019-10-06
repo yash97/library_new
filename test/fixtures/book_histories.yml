@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  issue_date: 2019-10-06 18:24:11
+  return_date: 2019-10-06 18:24:11
+  is_checked_out: false
+  on_hold: false
+  fine_amt: 9.99
+  is_approved: false
+
+two:
+  issue_date: 2019-10-06 18:24:11
+  return_date: 2019-10-06 18:24:11
+  is_checked_out: false
+  on_hold: false
+  fine_amt: 9.99
+  is_approved: false
