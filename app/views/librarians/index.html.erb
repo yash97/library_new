@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>LIBRARIANS:</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Associated Library</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @librarians.each do |librarian| %>
+            <tr>
+                <td><%= librarian.name %>
+                <td><%= librarian.email %>
+                <td><%= librarian.library %>
+                <td><% link_to "Show", librarian %>
+                <td><% link_to "Edit", edit_librarian_path(@librarian) %>
+                <td><% link_to "Delete", librarian, method: :delete, data: {confirm: "Are you sure?"} %></td>
+            </tr>
+    </tbody>
+</table>
+<%= link_to "New Librarian", new_librarian_path %>
