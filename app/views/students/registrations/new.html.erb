@@ -7,6 +7,20 @@
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :education_level %>
+    <%= form.select :education_level,['B.S','M.S','Ph.D']%>
+  </div>
+
+  <div class="field">
+    <%= form.label :university %>
+    <% =form.select(:university,University::UNIVERSITY_TYPES)%>
+  </div>
 
   <div class="field">
     <%= f.label :password %>
@@ -20,10 +34,11 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
-
+  <div class="field">
+      <%= form.hidden_field :max_book,:value=>'5' %>
+  </div>
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
-<% end %>
-
+<% end %> 
 <%= render "students/shared/links" %>
