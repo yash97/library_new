@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :book_histories
-  resources :libraries
   get 'home_page/index'
   devise_for :librarians , controllers:{sessions: 'librarians/sessions', registrations: 'librarians/registrations'}
   devise_for :students, controllers:{sessions: 'students/sessions',registrations: 'students/registrations'}
@@ -11,6 +9,13 @@ Rails.application.routes.draw do
   
   resources :users
   resources :sessions
+  resources :admins
+  resources :librarians
+  resources :students
+  resources :bookmarks
+  resources :book_histories
+  resources :libraries
+
   
   root to: 'home_page#index'
   resources :books

@@ -1,11 +1,9 @@
 class Book < ApplicationRecord
 belongs_to :library
-def self.search(search)
-  where("title LIKE ?", "%#{search}%")
-end
-def self.search1(search1)
-  where("author LIKE ?", "%#{search1}%")
-end
+has_many :book_histories
+has_many :bookmarks, dependent: :destroy
+validates :title, :summary, :author, :published, :edition, :language, presence: true
+validates :isbn, presence: true, uniqueness: true
 
 def self.search2(search2)
   where("published LIKE ?", "%#{search2}%")
