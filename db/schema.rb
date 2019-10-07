@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_06_223200) do
+ActiveRecord::Schema.define(version: 2019_10_07_060853) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -34,11 +34,19 @@ ActiveRecord::Schema.define(version: 2019_10_06_223200) do
     t.boolean "is_approved"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "student_id"
+    t.integer "book_id"
+    t.index ["book_id"], name: "index_book_histories_on_book_id"
+    t.index ["student_id"], name: "index_book_histories_on_student_id"
   end
 
   create_table "bookmarks", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "book_id"
+    t.integer "student_id"
+    t.index ["book_id"], name: "index_bookmarks_on_book_id"
+    t.index ["student_id"], name: "index_bookmarks_on_student_id"
   end
 
   create_table "books", force: :cascade do |t|
@@ -54,6 +62,8 @@ ActiveRecord::Schema.define(version: 2019_10_06_223200) do
     t.boolean "special"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "library_id"
+    t.index ["library_id"], name: "index_books_on_library_id"
   end
 
   create_table "librarians", force: :cascade do |t|
@@ -65,8 +75,10 @@ ActiveRecord::Schema.define(version: 2019_10_06_223200) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "university_id"
     t.index ["email"], name: "index_librarians_on_email", unique: true
     t.index ["reset_password_token"], name: "index_librarians_on_reset_password_token", unique: true
+    t.index ["university_id"], name: "index_librarians_on_university_id"
   end
 
   create_table "libraries", force: :cascade do |t|
@@ -77,6 +89,8 @@ ActiveRecord::Schema.define(version: 2019_10_06_223200) do
     t.decimal "overdue_fines"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "university_id"
+    t.index ["university_id"], name: "index_libraries_on_university_id"
   end
 
   create_table "students", force: :cascade do |t|
@@ -90,8 +104,10 @@ ActiveRecord::Schema.define(version: 2019_10_06_223200) do
     t.string "education_level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "university_id"
     t.index ["email"], name: "index_students_on_email", unique: true
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
+    t.index ["university_id"], name: "index_students_on_university_id"
   end
 
   create_table "universities", force: :cascade do |t|
