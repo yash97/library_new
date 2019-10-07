@@ -5,6 +5,18 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     @books = Book.all
+    @books = Book.all
+    if params[:search]
+      @books = Book.search(params[:search]).order("created_at DESC")
+    elsif params[:search1]
+      @books = Book.search1(params[:search1]).order("created_at DESC")
+    elsif params[:search2]
+      @books = Book.search2(params[:search2]).order("created_at DESC")
+    elsif params[:search3]
+      @books = Book.search3(params[:search3]).order("created_at DESC")
+    else
+      @books = Book.all.order('created_at DESC')
+    end
   end
 
   # GET /books/1
@@ -55,11 +67,15 @@ class BooksController < ApplicationController
   # DELETE /books/1.json
   def destroy
     @book.destroy
-    respond_to do |format|
-      format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
-      format.json { head :no_content }
+    if admin_signed_in? or librarian_signed_in?   #check librarian associated library
+      respond_to do |format|
+        format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

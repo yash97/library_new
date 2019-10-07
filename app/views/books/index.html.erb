@@ -1,7 +1,22 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Books</h1>
-
+<%= form_tag(books_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search by Title" %>
+  <%= submit_tag "Search" %>
+<% end %>
+<%= form_tag(books_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search1, params[:search1], placeholder: "Search by Author" %>
+  <%= submit_tag "Search" %>
+<% end %>
+<%= form_tag(books_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search2, params[:search2], placeholder: "Search by Published Date" %>
+  <%= submit_tag "Search" %>
+<% end %>
+<%= form_tag(books_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search3, params[:search2], placeholder: "Search by Subject" %>
+  <%= submit_tag "Search" %>
+<% end %>
 <table>
   <thead>
     <tr>
