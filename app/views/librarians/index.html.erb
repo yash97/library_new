@@ -1,26 +1,14 @@
-<p id="notice"><%= notice %></p>
-
-<h1>LIBRARIANS:</h1>
-
+<h1>Librarian Panel</h1>
+Name: <%= current_librarian.name %><br>
+Email: <%=  current_librarian.email %><br>
+<br>
 <table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Associated Library</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <% @librarians.each do |librarian| %>
-            <tr>
-                <td><%= librarian.name %>
-                <td><%= librarian.email %>
-                <td><%= librarian.library %>
-                <td><% link_to "Show", librarian %>
-                <td><% link_to "Edit", edit_librarian_path(@librarian) %>
-                <td><% link_to "Delete", librarian, method: :delete, data: {confirm: "Are you sure?"} %></td>
-            </tr>
-    </tbody>
+  <th><strong>Librarian Rights</strong></th>
+	<tr><td></tr></td>
+	<tr><td></tr></td>
+	<tr><td><%= link_to 'Edit Profile', edit_librarian_path(current_librarian) %></td></tr>
+	<tr><td></tr></td>
+	<tr><td><strong>Books</strong></tr></td>
+	<tr><td><%= link_to 'Add New Book', new_book_path %></td></tr>
+    <tr><td><%= link_to 'View Books (Details/Edit/Delete)', librarian_book_view_path %></td></tr>
 </table>
-<%= link_to "New Librarian", new_librarian_path %>
