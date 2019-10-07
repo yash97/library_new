@@ -1,7 +1,5 @@
 class Book < ApplicationRecord
 belongs_to :library
-validates :title,:presence=> true
-validates :summary,:presence=> true
 def self.search(search)
   where("title LIKE ?", "%#{search}%")
 end
@@ -15,10 +13,13 @@ end
 def self.search3(search3)
   where("subject LIKE ?", "%#{search3}%")
 end
-validates :isbn,:presence=> true,:uniqueness=> true
-validates :author, :presence=> true
-validates :published,:presence=> true
-validates :edition,:presence=> true
-validates :language,:presence=> true
-
+has_many :book_history
+has_many :bookmarks, :dependent => :destroy
+validates :title, :presence => true
+validates :summary, :presence => true
+validates :isbn, :presence => true, :uniqueness => true
+validates :author, :presence => true
+validates :published, :presence => true
+validates :edition, :presence => true
+validates :language, :presence => true
 end
