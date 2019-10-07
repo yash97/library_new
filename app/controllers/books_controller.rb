@@ -67,11 +67,15 @@ class BooksController < ApplicationController
   # DELETE /books/1.json
   def destroy
     @book.destroy
-    respond_to do |format|
-      format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
-      format.json { head :no_content }
+    if admin_signed_in? or librarian_signed_in?   #check librarian associated library
+      respond_to do |format|
+        format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
