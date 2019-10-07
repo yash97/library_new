@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @student.name %>'s Profile</h1>
+<br><br>
+
+<strong>Student Actions:</strong>
+<br><br>
+
+<table>
+  <tr>
+    <td><%= link_to "Edit your Profile", edit_student_path(@student) %></td>
+  </tr>
+  <tr>
+    <td><%= link_to "View books", books_path %></td>
+  </tr>
+  <tr>
+    <td><%= link_to "View libraries", student_libraries_index_path %></td>
+  </tr>
+</table>
