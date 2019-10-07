@@ -14,12 +14,12 @@
 
   <div class="field">
     <%= form.label :education_level %>
-    <%= form.select :education_level,['B.S','M.S','Ph.D']%>
+    <%= form.select :education_level, ['Undergraduate', 'Masters', 'PhD'] %>
   </div>
 
   <div class="field">
     <%= form.label :university %>
-    <% =form.select(:university,University::UNIVERSITY_TYPES)%>
+    <%= form.select :university, University::university_options, :prompt => "Select One" %>
   </div>
 
   <div class="field">
@@ -31,7 +31,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
   <div class="field">
