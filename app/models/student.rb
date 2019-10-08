@@ -11,7 +11,7 @@ class Student < ApplicationRecord
   validates :university, presence: true
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
   validates_uniqueness_of :email, uniqueness: :message
-  validates :password, presence: true, length:{minimum:8}, confirmation: true
+  validates :password, presence: true, length:{minimum:6}, confirmation: true
   
   education_level_options = %w(Undergraduate Masters PhD)
   validates :education_level, :inclusion => {:in => education_level_options}

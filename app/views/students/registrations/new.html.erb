@@ -8,18 +8,17 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :education_level %>
-    <%= form.select :education_level, ['Undergraduate', 'Masters', 'PhD'] %>
+    <%= f.label :education_level %>
+    <%= f.select :education_level, ['Undergraduate', 'Masters', 'PhD'] %>
   </div>
-
   <div class="field">
-    <%= form.label :university %>
-    <%= form.select :university, University::university_options, :prompt => "Select One" %>
+    <%= f.label :university %>
+    <%= f.select :education_level,["NCSU", "Duke", "Clemson", "UNCC"] %>
   </div>
 
   <div class="field">
@@ -35,7 +34,7 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
   <div class="field">
-      <%= form.hidden_field :max_book,:value=>'5' %>
+      <%= f.hidden_field :max_book,:value=>'5' %>
   </div>
   <div class="actions">
     <%= f.submit "Sign up" %>

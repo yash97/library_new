@@ -1,6 +1,6 @@
 class University < ApplicationRecord
 
-    university_options = ["NCSU", "Duke", "Clemson", "UNCC"]
+    UNIVERSITY_OPTIONS = ["NCSU", "Duke", "Clemson", "UNCC"]
 
     has_many :libraries
     has_many :students

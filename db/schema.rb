@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_07_060853) do
+ActiveRecord::Schema.define(version: 2019_10_08_015538) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 2019_10_07_060853) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "university_id"
+    t.string "university"
     t.index ["email"], name: "index_students_on_email", unique: true
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
     t.index ["university_id"], name: "index_students_on_university_id"
