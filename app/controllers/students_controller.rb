@@ -6,11 +6,8 @@ class StudentsController < ApplicationController
     # GET /students.json
     def index
       if admin_signed_in?
-        sign_out :student
-        redirect_to admins_path
+        @students = Student.all
       end
-   
-      @students = Student.all
     end
   
     # GET /students/1
