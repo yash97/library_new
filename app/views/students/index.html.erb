@@ -1,19 +1,24 @@
-<p id="notice"><%= notice %></p>
-
-<h1><%= current_student.name %>'s Profile</h1>
-<br><br>
-
-<strong>Student Actions:</strong>
-<br><br>
+<h1>Students</h1>
 
 <table>
-  <tr>
-    <td><%= link_to "Edit your Profile", edit_student_path(current_student) %></td>
-  </tr>
-  <tr>
-    <td><%= link_to "View books", books_path %></td>
-  </tr>
-  <tr>
-    <td><%= link_to "View libraries", libraries_path %></td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.email %></td>
+		<td><%= link_to 'Show', student %></td>
+        <td><%= link_to 'Edit', edit_student_registration_path(student) %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
+
+<br>

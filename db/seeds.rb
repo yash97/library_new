@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-   # p=Admin.create(:name=>'admin',:email=>'admin@ncsu.edu',:password=>'admin',:password_confirmation=>'admin')
-    #p.save
+    p=Admin.create(:name=>'admin',:email=>'admin@ncsu.edu',:password=>'admin123',:password_confirmation=>'admin123')
+    p.save
     x=Library.create(:name=>'test',:location=>'hilsborough',:borrow_limit=>2,:overdue_fines=>25)
     x.save

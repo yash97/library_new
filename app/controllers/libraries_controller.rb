@@ -53,7 +53,7 @@ class LibrariesController < ApplicationController
           end
         end
       else
-        redirect_to @library,notice:not admin or librarian;
+        redirect_to @library,notice: 'not admin or librarian'
       end
     end
   end
@@ -71,10 +71,9 @@ class LibrariesController < ApplicationController
         end
       end
       else
-        redirect_to @library,notice:'not admin'
+        redirect_to @library,notice: 'not admin'
       end
     end
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

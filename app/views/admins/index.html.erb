@@ -12,21 +12,21 @@ Email: <%=  current_admin.email %><br>
   <tr><td></td><tr>
   <tr><td></td><tr>
   <tr><td><strong>Libraries</strong></td><tr>
-  <tr><td><%= link_to 'Add Library', new_library_path %></tr>
-  <tr><td><%= link_to 'View Libraries (Details/Edit/Delete)', show_libraries_path %></td></tr>
+  <tr><td><%= link_to 'Add Library', '/libraries/new' %></tr>
+  <tr><td><%= link_to 'View Libraries (Details/Edit/Delete)', '/libraries' %></td></tr>
   <tr><td></td><tr>
   <tr><td></td><tr>
   <tr><td><strong>Librarians</strong></td><tr>
-  <tr><td><%= link_to 'Add Librarian', new_librarian_path %></td></tr>
-  <tr><td><%= link_to 'View Librarians', show_librarians_path %></td></tr>
+  <tr><td><%= link_to 'Add Librarian', '/librarians/new' %></td></tr>
+  <tr><td><%= link_to 'View Librarians', '/librarians' %></td></tr>
   <tr><td></td><tr>
   <tr><td></td><tr>
   <tr><td><strong>Students</strong></td><tr>
-  <tr><td><%= link_to 'Add Student', new_student_path %></td></tr>
-  <tr><td><%= link_to 'View Students (Details/Edit/Delete)', show_students_path %></td></tr>  
+  <tr><td><%= link_to 'Add Student', '/students/new' %></td></tr>
+  <tr><td><%= link_to 'View Students (Details/Edit/Delete)', '/students' %></td></tr>  
   <tr><td></td><tr>
   <tr><td></td><tr>
   <tr><td><strong>Books</strong></td><tr>
-  <tr><td><%= link_to 'Add Book', add_books_path %></td></tr>
-  <tr><td><%= link_to 'View Books (Details/Borrowing History/Edit/Delete)', show_books_path %></tr>
+  <tr><td><%= link_to 'Add Book', '/books/new' %></td></tr>
+  <tr><td><%= link_to 'View Books (Details/Borrowing History/Edit/Delete)', '/books' %></tr>
 </table>
