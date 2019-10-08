@@ -2,28 +2,28 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @student.name %>
+  <%= current_student.name %>
 </p>
 
 <p>
   <strong>Email:</strong>
-  <%= @student.email %>
+  <%= current_student.email %>
 </p>
 
 <p>
   <strong>Education Level:</strong>
-  <%= @student.education_level %>
+  <%= current_student.education_level %>
 </p>
 
 <p>
   <strong>University:</strong>
-  <%= @student.university %>
+  <%= current_student.university %>
 </p>
 
 <p>
   <strong>Max books:</strong>
-  <%= @student.max_books %>
+  <%= current_student.max_books %>
 </p>
 
-<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'Edit', edit_student_path(current_student) %> |
 <%= link_to 'Back', students_path %>

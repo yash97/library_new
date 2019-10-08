@@ -18,7 +18,7 @@
   </div>
   <div class="field">
     <%= f.label :university %>
-    <%= f.select :education_level,["NCSU", "Duke", "Clemson", "UNCC"] %>
+    <%= f.select("student","university",University::UNIVERSITY_OPTIONS) %>
   </div>
 
   <div class="field">

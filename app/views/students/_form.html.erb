@@ -33,7 +33,7 @@
 
   <div class="field">
     <%= form.label :university %>
-    <%= form.select :university, University::university_options, :prompt => "Select One" %>
+    <%= form.select :university, University::UNIVERSITY_OPTIONS, :prompt => "Select One" %>
   </div>
 
   <div class="field" input_type="hidden">
