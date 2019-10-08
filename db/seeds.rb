@@ -9,3 +9,8 @@
     #p.save
     x=Library.create(:name=>'test',:location=>'hilsborough',:borrow_limit=>2,:overdue_fines=>25)
     x.save
+
+    University.create(name:"NCSU")
+    University.create(name:"Duke")
+    University.create(name:"CLemson")
+    University.create(name:"UNCC")
