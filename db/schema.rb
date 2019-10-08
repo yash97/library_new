@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_08_015538) do
+ActiveRecord::Schema.define(version: 2019_10_08_082957) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -75,15 +75,14 @@ ActiveRecord::Schema.define(version: 2019_10_08_015538) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "university_id"
+    t.integer "library_id"
     t.index ["email"], name: "index_librarians_on_email", unique: true
+    t.index ["library_id"], name: "index_librarians_on_library_id"
     t.index ["reset_password_token"], name: "index_librarians_on_reset_password_token", unique: true
-    t.index ["university_id"], name: "index_librarians_on_university_id"
   end
 
   create_table "libraries", force: :cascade do |t|
     t.string "name"
-    t.string "university"
     t.string "location"
     t.integer "borrow_limit"
     t.decimal "overdue_fines"
@@ -100,12 +99,11 @@ ActiveRecord::Schema.define(version: 2019_10_08_015538) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name"
-    t.integer "max_book"
     t.string "education_level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "university_id"
-    t.string "university"
+    t.integer "max_books"
     t.index ["email"], name: "index_students_on_email", unique: true
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
     t.index ["university_id"], name: "index_students_on_university_id"
@@ -114,6 +112,7 @@ ActiveRecord::Schema.define(version: 2019_10_08_015538) do
   create_table "universities", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "users", force: :cascade do |t|
