@@ -25,7 +25,7 @@
     <%= form.label :password %>
     <%= form.text_field :password %>
   </div>
-
+  <!--
   <div class="field">
     <%= form.label :education_level %>
     <%= form.select :education_level, ["Undergraduate", "Masters", "PhD"] %>
@@ -33,14 +33,14 @@
 
   <div class="field">
     <%= form.label :university %>
-    <%= form.select :university, University::UNIVERSITY_OPTIONS, :prompt => "Select One" %>
+    <%= form.select(:university_id, University.all.collect {|u| [u.name, u.id]}, { :include_blank => 'Select One' }) %>
   </div>
 
   <div class="field" input_type="hidden">
     <%= form.label :max_books %>
     <%= form.number_field :max_books %>
   </div>
-
+-->
   <div class="actions">
     <%= form.submit %>
   </div>

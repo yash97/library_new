@@ -18,7 +18,7 @@
   </div>
   <div class="field">
     <%= f.label :university %>
-    <%= f.select("student","university",University::UNIVERSITY_OPTIONS) %>
+    <%= f.select(:university_id, University.all.collect {|u| [u.name, u.id]}, { :include_blank => 'Select One' }) %>
   </div>
 
   <div class="field">
