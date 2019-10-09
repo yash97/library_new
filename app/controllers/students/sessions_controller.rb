@@ -14,9 +14,8 @@ class Students::SessionsController < Devise::SessionsController
   # end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+   def destroy
+   end
 
    protected
 
@@ -26,8 +25,11 @@ class Students::SessionsController < Devise::SessionsController
    end
 
    def after_sign_in_path_for(resource)
-    id=current_student.id 
-    '/students/id'
+    '/students'
+  end
+
+  def after_sign_out_path_for(resource)
+    root_url
   end
   
 end

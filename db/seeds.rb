@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
     p=Admin.create(:name=>'admin',:email=>'admin@ncsu.edu',:password=>'admin123',:password_confirmation=>'admin123')
     p.save
-    x=Library.create(:name=>'test',:location=>'hilsborough',:borrow_limit=>2,:overdue_fines=>25)
+    x=Library.create(:name=>'test',:location=>'hilsborough',:borrow_limit=>2,:overdue_fines=>25,:university_id=>1)
     x.save
 
     University.create(name:"NCSU")

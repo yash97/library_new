@@ -17,4 +17,7 @@ class LibrariansController < ApplicationController
         @librarian=Librarian.new
     end
 
+    def list_librarians
+        @librarians=Librarian.all
+    end
 end

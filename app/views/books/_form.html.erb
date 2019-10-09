@@ -43,7 +43,7 @@
 
   <div class="field">
   <%= form.label :library_id %>
-  <%= collection_select(:book, :library_id, Library.all, :id, :name, prompt: false) %>
+  <%= form.select(:library_id, Library.all.collect {|u| [u.name, u.id]}, { :include_blank => 'Select One' }) %>
   </div>
 
   <div class="field">

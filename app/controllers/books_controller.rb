@@ -26,7 +26,12 @@ class BooksController < ApplicationController
 
   # GET /books/new
   def new
-    @book = Book.new
+    if admin_signed_in? or librarian_signed_in?
+      @book = Book.new
+    else
+      flash[:notice]='Student cannot make new book'
+      redirect_to '/students'
+    end
   end
 
   # GET /books/1/edit
@@ -169,7 +174,7 @@ class BooksController < ApplicationController
     end
 	  redirect_to action: "getBookmarkBooks"
   end
-  
+
   def getStudentBookFine
     if(!current_student.nil?)
       @checkouts = Checkout.where(:student_id => current_student.id , :return_date => nil )
@@ -201,6 +206,7 @@ class BooksController < ApplicationController
       end
     end
   end
+  
   def viewHoldRequestForLibrarian
     @holdreqs = HoldRequest.where(:book_id => Book.where(:library_id => Library.select('id').where(:name => current_librarian.library) ))
   end
@@ -213,6 +219,13 @@ class BooksController < ApplicationController
   def viewBookHistory
     @checkouts = Checkout.where.not(:return_date => nil ).where(:book_id => params[:id])
   end  
+  
+  def list_checkedoutBooks
+    @books = Book.where(id: Checkout.select('book_id').where(:return_date =>nil))
+  end
+  def viewHoldRequestForLibrarian
+    @holdreqs = HoldRequest.where(:book_id => Book.where(:library_id => Library.select('id').where(:name => current_librarian.library) ))
+  end
 
 
   private

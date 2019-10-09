@@ -23,7 +23,7 @@ class StudentsController < ApplicationController
     # GET /students/1/edit
     def edit
     end
-  
+    
     # POST /students
     # POST /students.json
     def create
@@ -73,7 +73,10 @@ class StudentsController < ApplicationController
     
     def checkoutdisplay
     end
-  
+    
+    def list_students
+      @students=Student.all
+    end
   
     private
       # Use callbacks to share common setup or constraints between actions.

@@ -14,7 +14,7 @@
 
   <div class="field">
   <%= f.label :library %>
-  <%= select(:library_id, Library.all.collect{|c| [c.name]}, { :include_blank => 'Select One' }) %>
+  <%= f.select(:library_id, Library.all.collect {|u| [u.name, u.id]}, { :include_blank => 'Select One' }) %>
   </div>
 
   <div class="field">

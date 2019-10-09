@@ -22,9 +22,17 @@
         <td><%= library.location %></td>
         <td><%= library.borrow_limit %></td>
         <td><%= library.overdue_fines %></td>
-        <td><%= link_to 'Show', library %></td>
-        <td><%= link_to 'Edit', edit_library_path(library) %></td>
-        <td><%= link_to 'Destroy', library, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if admin_signed_in? %>
+          <td><%= link_to 'Show', library %></td>
+          <td><%= link_to 'Edit', edit_library_path(library) %></td>
+          <td><%= link_to 'Destroy', library, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <%= link_to 'New Library', new_library_path %>
+        <% end %>
+        <% if librarian_signed_in? %>
+          <td><%= link_to 'Show', library %></td>
+          <td><%= link_to 'Edit', edit_library_path(library) %></td>
+        <% end %>
+
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +40,4 @@
 
 <br>
 
-<%= link_to 'New Library', new_library_path %>
+

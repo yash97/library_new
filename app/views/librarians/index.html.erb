@@ -1,3 +1,4 @@
+<%if false%>
 <h1>Librarians</h1>
 
 <table>
@@ -23,3 +24,27 @@
   </tbody>
 </table>
 <br>
+<%end%>
+<p id="notice"><%= notice %></p>
+<p>
+    <strong>Name: </strong>
+    <%= current_librarian.name %>
+</p>
+
+<p>
+    <strong>Email: </strong>
+    <%= current_librarian.email %>
+</p>
+
+<p>
+    <strong>Library: </strong>
+    <%= current_librarian.library %>
+</p>
+
+<tr><td><%= link_to 'View Checked Out Books', list_checkedoutBooks_path %></td></tr>
+<tr><td><%= link_to 'View Overdue Books and Student Fine', getOverDueBooks_path %></td></tr>
+<tr><td><%= link_to 'View Book Hold Request ', viewHoldRequestForLibrarian_path %></td></tr>
+<tr><td><%= link_to 'View Books (Details/Edit/Delete/Borrowing History)', '/books' %></td></tr>
+
+<%= link_to "Edit", edit_librarian_registration_path(current_librarian) %>
+<%= link_to "Back", librarians_path %>

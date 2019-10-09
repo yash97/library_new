@@ -1,24 +1,28 @@
+
+<p id="notice"><%= notice %></p>
+
 <h1>Students</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @students.each do |student| %>
-      <tr>
-        <td><%= student.name %></td>
-        <td><%= student.email %></td>
-		<td><%= link_to 'Show', student %></td>
-        <td><%= link_to 'Edit', edit_student_registration_path(student) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+Name: <%= current_student.name %><br>
+Email: <%=  current_student.email %><br>
 <br>
+<br>
+<table>
+  <th><strong>Student options</strong></th>
+  
+  <tr><td></td><tr>
+  <tr><td><%= link_to "Edit profile", edit_student_registration_path(current_student) %></td></tr>
+  <tr><td></td><tr>
+  <tr><td></td><tr>
+  <tr><td><strong>Books</strong></td><tr>
+  <tr><td><%= link_to 'View Books', books_path %></td></tr>
+  <tr><td></td><tr>
+  <tr><td></td><tr>
+  <tr><td><strong>Libraries</strong></td><tr>
+  <tr><td><%= link_to 'View Libraries', '/libraries' %></td></tr>
+  <tr><td></td><tr>
+  <tr><td></td><tr>
+  <tr><td><strong>Your Data</strong></td><tr>
+  <tr><td><%= link_to 'Your Activity (Checkouts/Bookmarks/Hold Requests)', getBookmarkBooks_path %></td></tr>
+</table>
+<%= link_to('Logout', destroy_student_session_path, method: :delete) %>

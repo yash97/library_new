@@ -26,8 +26,7 @@ class Librarians::SessionsController < Devise::SessionsController
   end
 
   def after_sign_in_path_for(resource)
-    id=current_librarian.id 
-    '/librarians/id'
+    '/librarians'
   end
 
 end
