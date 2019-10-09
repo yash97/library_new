@@ -32,7 +32,7 @@
 
 <p>
   <strong>Associated library:</strong>
-  <%= @book.associated_library %>
+  #<%= @book.associated_library %>
 </p>
 
 <p>
@@ -48,6 +48,13 @@
 <p>
   <strong>Special:</strong>
   <%= @book.special %>
+</p>
+
+<p>
+  <strong>Photo:</strong>
+  <% if @book.cover.attached? %>
+  <img src="<%=(url_for(@book.cover))%>">
+  <%end %>
 </p>
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
