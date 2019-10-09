@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_08_015538) do
+ActiveRecord::Schema.define(version: 2019_10_09_062230) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -56,14 +56,32 @@ ActiveRecord::Schema.define(version: 2019_10_08_015538) do
     t.string "language"
     t.date "published"
     t.string "edition"
-    t.string "associated_library"
     t.string "subject"
     t.text "summary"
     t.boolean "special"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "library_id"
+    t.integer "quantity"
+    t.integer "available_quantity"
     t.index ["library_id"], name: "index_books_on_library_id"
+  end
+
+  create_table "checkouts", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "book_id"
+    t.date "issue_date"
+    t.date "return_date"
+    t.integer "validity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "hold_requests", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "librarians", force: :cascade do |t|

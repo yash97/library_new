@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Librarians::SessionsController < Devise::SessionsController
-  before_action :configure_sign_in_params, only: [:create]
+  #before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
   # def new
@@ -25,8 +25,9 @@ class Librarians::SessionsController < Devise::SessionsController
     devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password])
   end
 
-  def after_sign_in_path_for(resource) 
-    '/librarians/'
+  def after_sign_in_path_for(resource)
+    id=current_librarian.id 
+    '/librarians/id'
   end
 
 end

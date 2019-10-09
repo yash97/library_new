@@ -20,4 +20,5 @@ validates :author, :presence => true
 validates :published, :presence => true
 validates :edition, :presence => true
 validates :language, :presence => true
+validates :quantity,:presence =>true
 end

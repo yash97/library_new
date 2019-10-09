@@ -1,29 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= current_student.name %>
-</p>
+<h1>Students</h1>
 
-<p>
-  <strong>Email:</strong>
-  <%= current_student.email %>
-</p>
-
-<p>
-  <strong>Education Level:</strong>
-  <%= current_student.education_level %>
-</p>
-
-<p>
-  <strong>University:</strong>
-  <%= current_student.university %>
-</p>
-
-<p>
-  <strong>Max books:</strong>
-  <%= current_student.max_books %>
-</p>
-
-<%= link_to 'Edit', edit_student_path(current_student) %> |
-<%= link_to 'Back', students_path %>
+Name: <%= current_student.name %><br>
+Email: <%=  current_student.email %><br>
+<br>
+<br>
+<table>
+  <th><strong>Student options</strong></th>
+  
+  <tr><td></td><tr>
+  <tr><td><%= link_to "Edit profile", edit_student_registration_path(current_student) %></td></tr>
+  <tr><td></td><tr>
+  <tr><td></td><tr>
+  <tr><td><strong>Books</strong></td><tr>
+  <tr><td><%= link_to 'View Books', books_path %></td></tr>
+  <tr><td></td><tr>
+  <tr><td></td><tr>
+  <tr><td><strong>Libraries</strong></td><tr>
+  <tr><td><%= link_to 'View Libraries', '/libraries' %></td></tr>
+  <tr><td></td><tr>
+  <tr><td></td><tr>
+  <tr><td><strong>Your Data</strong></td><tr>
+  <tr><td><%= link_to 'Your Activity (Checkouts/Bookmarks/Hold Requests)', getBookmarkBooks_path %></td></tr>
+</table>

@@ -14,5 +14,10 @@
     <%= @librarian.library %>
 </p>
 
+<tr><td><%= link_to 'View Checked Out Books', list_checkedoutBooks_path %></td></tr>
+<tr><td><%= link_to 'View Overdue Books and Student Fine', getOverdueBooks_path %></td></tr>
+<tr><td><%= link_to 'View Book Hold Request ', viewHoldRequestForLibrarian_path %></td></tr>
+<tr><td><%= link_to 'View Books (Details/Edit/Delete/Borrowing History)', '/books' %></td></tr>
+
 <%= link_to "Edit", edit_librarian_path(@librarian) %>
 <%= link_to "Back", librarians_path %>

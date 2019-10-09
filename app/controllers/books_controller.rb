@@ -75,6 +75,144 @@ class BooksController < ApplicationController
     end
   end
 
+  def bookmark
+    @book=Book.find(params[:id])
+    @bookmark=Bookmark.where(:student_id=>current_student.id,:book_id=>@book.id).first
+    if @bookmark.nil?
+      @bookmark=Bookmark.new(:student_id=>current_student.id, :book_id=>@book.id)
+      @bookmark.save!
+      flash[:notice]="book added to bookmark"
+    else
+      flash[:notice]="Book is already Bookmarked!!"
+    end
+    redirect_to action: "index"
+  end
+
+  def unbookmark
+    @book =Book.find(params[:id])
+    @bookmark=Bookmark.where(:student_id=>current_student.id,:book_id=>@book.id).first
+    if !bookmark.nil?
+      @bookmark.destroy
+      flash[:notice]="Bookmark removed succesfully."
+    else
+      flash[:notice]="Bookmark not found!!"
+    end
+    redirect_to action: "getBookmarkBooks"
+  end
+
+  def getBookmarkBooks
+    @bookmark=Book.where(id: Bookmark.select('book_id').where(:student_id=>current_student.id))
+    @checkout = Book.where(id: Checkout.select('book_id').where(:return_date =>nil, :student_id => current_student.id))
+  end
+  
+  def checkout # check if the given book is a special book or not
+    @book = Book.find(params[:id])
+
+    if(@book.available_quantity>0)
+      if Checkout.where(:student_id => current_student.id , :book_id => @book.id, :return_date => nil).first.nil?
+        @checkout = Checkout.new(:student_id => current_student.id , :book_id => @book.id , :issue_date => Date.today , :return_date =>nil , :validity => Library.find(@book.library_id).borrow_limit)
+        flash[:notice] = "Book Successfully checked Out"
+        @book.decrement(:count)
+        @checkout.save!
+        @book.save!
+      else 
+        flash[:notice] = "Book Already Checked Out!!!"
+      end  
+    else
+      if Checkout.where(:student_id => current_student.id , :book_id => @book.id).first.nil?
+        if HoldRequest.where(:student_id => current_student.id , :book_id => @book.id).first.nil?
+          @hold_request =  HoldRequest.new(:student_id => current_student.id , :book_id => @book.id)
+          @hold_request.save!
+          flash[:notice] = "Book Hold Request Placed"
+        else 
+          flash[:notice] = "Book Hold Request Is Already Placed"
+        end
+      else
+        flash[:notice] = "Book Already Checked Out!!!"
+      end
+    end
+	  redirect_to action: "index"
+  end
+
+  def returnBook
+    @book = Book.find(params[:id])
+    if(@book.available_quantity>0) 
+      if !Checkout.where(:student_id => current_student.id , :book_id => @book.id).first.nil?
+        @checkout = Checkout.where(:student_id => current_student.id , :book_id => @book.id ).first
+        @checkout.update( :return_date => Date.today)
+        @checkout.save!
+        flash[:notice] = "Book Successfully returned"
+        @user = current_student
+        @book.increment(:count)
+        @book.save!
+      else 
+        flash[:notice] = "Book is not checked out"
+      end  
+    else
+      if !Checkout.where(:student_id => current_student.id , :book_id => @book.id).nil?
+        @hold_request = HoldRequest.where(:book_id => @book.id).first
+        if @hold_request.nil?
+          @checkout = Checkout.where(:student_id => current_student.id , :book_id => @book.id )
+          @checkout.update( :return_date => Date.today)
+          @checkout.save!
+          flash[:notice] = "Book Successfully returned"
+          @book.increment(:count)
+          @book.save!
+        else
+          @checkout = Checkout.where(:student_id => current_student.id , :book_id => @book.id )
+          @checkout.update( :return_date => Date.today)
+          @checkout.save!
+          flash[:notice] = "Book Successfully returned"
+          @hold_request.destroy
+        end
+      end
+    end
+	  redirect_to action: "getBookmarkBooks"
+  end
+  
+  def getStudentBookFine
+    if(!current_student.nil?)
+      @checkouts = Checkout.where(:student_id => current_student.id , :return_date => nil )
+    elsif (!current_admin.nil?)
+      @checkouts = Checkout.where(:return_date => nil )
+    end
+    if !@checkouts.nil?
+      @fines = Array.new
+      @checkouts.each do |checkout|
+        if checkout.issue_date + checkout.validity < Date.today
+          delay = (Date.today - checkout.issue_date).to_i - checkout.validity
+          fine_per_day  = Library.find(Book.find(checkout.book_id).library_id).overdue_fines
+          @fines.push({:fine_ammount => delay * fine_per_day, :book_id => checkout.book_id})
+        end
+      end
+    end
+  end
+  
+  def getOverdueBooks
+    @checkouts = Checkout.where(:return_date => nil, :book_id => Book.select('id').where(:library_id => Library.select('id').where(:name => current_librarian.library )))
+    if !@checkouts.nil?
+      @fines = Array.new
+      @checkouts.each do |checkout|
+        if checkout.issue_date + checkout.validity < Date.today
+          delay = (Date.today - checkout.issue_date).to_i - checkout.validity
+          fine_per_day  = Library.find(Book.find(checkout.book_id).library_id).overdue_fines
+          @fines.push({:fine_ammount => delay * fine_per_day, :book_id => checkout.book_id , :student_id => checkout.student_id})
+        end
+      end
+    end
+  end
+  def viewHoldRequestForLibrarian
+    @holdreqs = HoldRequest.where(:book_id => Book.where(:library_id => Library.select('id').where(:name => current_librarian.library) ))
+  end
+
+  def viewHoldRequestForAdmin
+    @holdreqs = HoldRequest.all
+    render "viewHoldRequestForLibrarian"
+  end
+  
+  def viewBookHistory
+    @checkouts = Checkout.where.not(:return_date => nil ).where(:book_id => params[:id])
+  end  
 
 
   private
@@ -85,6 +223,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:isbn, :title, :author, :language, :published, :edition, :associated_library, :subject, :summary, :special)
+      params.require(:book).permit(:isbn, :title, :author, :language, :published, :edition, :library_id, :subject, :summary, :special,:quantity,:available_quantity)
     end
 end

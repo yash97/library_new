@@ -25,8 +25,9 @@ class Students::SessionsController < Devise::SessionsController
      devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
    end
 
-   def after_sign_in_path_for(resource) 
-    '/students/'
+   def after_sign_in_path_for(resource)
+    id=current_student.id 
+    '/students/id'
   end
   
 end

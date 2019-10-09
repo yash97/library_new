@@ -6,10 +6,14 @@ Rails.application.routes.draw do
   resources :admins
   resources :librarians
   resources :students
-  resources :bookmarks
+  #resources :bookmarks
   resources :book_histories
   resources :libraries
-
+  get '/getBookmarkBooks' => 'books#getBookmarkBooks', :as => 'getBookmarkBooks'
+  get '/getStudentBookFine' => 'books#getStudentBookFine', :as => 'getStudentBookFine'
+  get '/getOverDueBooks' => 'books#getOverDueBooks', :as => 'getOverDueBooks'
+  get '/viewBookHistory' => 'books#viewBookHistory', :as => 'viewBookHistory'
+  get '/viewHoldRequest' => 'books#viewHoldRequest', :as => 'viewHoldRequest'
   root to: 'home_page#index'
   resources :books
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
