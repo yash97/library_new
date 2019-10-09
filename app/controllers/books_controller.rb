@@ -3,6 +3,9 @@ class BooksController < ApplicationController
   before_action :authorize, only:[:edit,:update]
   # GET /books
   # GET /books.json
+  #
+
+
   def index
     @books = Book.all
     @books = Book.all
@@ -17,6 +20,10 @@ class BooksController < ApplicationController
     else
       @books = Book.all.order('created_at DESC')
     end
+  end
+
+  def cover
+    @book=Book.cover.attach(params[:cover])
   end
 
   # GET /books/1
