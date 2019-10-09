@@ -16,7 +16,7 @@
       <tr>
         <td><%= librarian.name %></td>
         <td><%= librarian.email %></td>
-        <td><%= librarian.library %></td>
+        <td><%= Library.find(librarian.library_id).name %></td>
 		<td><%= link_to 'Show/Edit', edit_librarian_registration_path %></td>
 		<td><%= link_to 'Destroy', librarian, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

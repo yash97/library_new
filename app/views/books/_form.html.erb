@@ -45,6 +45,12 @@
   <%= form.label :library_id %>
   <%= form.select(:library_id, Library.all.collect {|u| [u.name, u.id]}, { :include_blank => 'Select One' }) %>
   </div>
+  
+  <div class="field">
+  <%= form.label :quantity %>
+  <%= form.text_field :quantity %>
+  </div>
+
 
   <div class="field">
     <%= form.label :available_quantity %>

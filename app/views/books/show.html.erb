@@ -32,7 +32,11 @@
 
 <p>
   <strong>Associated library:</strong>
-  #<%= @book.associated_library %>
+
+  <%= @book.associated_library %>
+
+  <%= Library.find(@book.library_id).name %>
+
 </p>
 
 <p>
