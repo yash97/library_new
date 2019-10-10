@@ -1,8 +1,10 @@
 Library Management System
 
 Pre-Configured Admin Credentials:
+
 email: admin@ncsu.edu
-password:admin123
+
+password: admin123
 
 Admin Roles, Functionalities and Priviliges:
 
