@@ -1,5 +1,7 @@
 Library Management System
 
+Deployed Link: https://afternoon-refuge-71497.herokuapp.com/
+
 Pre-Configured Admin Credentials:
 
 email: admin@ncsu.edu
