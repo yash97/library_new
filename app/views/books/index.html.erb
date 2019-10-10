@@ -51,7 +51,7 @@
         <td><%= link_to 'Edit', edit_book_path(book) %></td>
         <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% if admin_signed_in? or librarian_signed_in? %>          
-          <td><%= link_to 'Show/Edit', book %></td>
+          <td><%= link_to 'Show/Edit', 'books#edit' %></td>
           <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <td><%= link_to 'View Book History', controller: "books", action: "viewBookHistory", id: book %></td>
         <% else %>

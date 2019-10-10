@@ -46,6 +46,21 @@ ActiveRecord::Schema.define(version: 2019_10_09_194913) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "book_histories", force: :cascade do |t|
+    t.datetime "issue_date"
+    t.datetime "return_date"
+    t.boolean "is_checked_out"
+    t.boolean "on_hold"
+    t.decimal "fine_amt"
+    t.boolean "is_approved"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "student_id"
+    t.integer "book_id"
+    t.index ["book_id"], name: "index_book_histories_on_book_id"
+    t.index ["student_id"], name: "index_book_histories_on_student_id"
+  end
+
   create_table "bookmarks", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
