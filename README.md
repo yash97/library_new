@@ -98,10 +98,12 @@ USE CASES:
 
 If the book is available, proceed to check out:
 
-If the book is in Special Collection list, add this to Librarian's approval list and wait.
+If the book is in Special Collection list, Librarian's approval list is required and student has to wait.
 Otherwise, add the book to student's checked out list
-If the book is unavailable or the student has checked out N books already,
+If the book is unavailable or the student has checked out N books already, student is informed that the book is unavailable or max limit reached.
+A book hold request is created if the student wants to continue requesting.
+Number of hold requests is visible to every user
 
-Inform the student that the book is unavailable or max limit reached.
-Create a book hold request if the student wants to continue requesting.
-Number of hold requests for a book should be visible to every user
+If there is no hold request for a book, the book is returned and the available count of the book is increased
+If there is a pending hold request, the hold request is approved and the book is added to the checked out list of the requested student
+and a mail is sent  to the student that the book is checked out.
