@@ -8,7 +8,7 @@ email: admin@ncsu.edu
 
 password: admin123
 
-Admin Roles, Functionalities and Priviliges:
+ADMIN ROLES, FUNCTIONALITIES AND PRIVILIGES:
 
 Log in with an email and password
 
@@ -33,7 +33,7 @@ View the borrowing history of each book.
 Delete Student/Book/Librarian from the system
 
 
-Librarian Functionalities and Priviliges:
+LIBRARIAN ROLES, FUNCTIONALITIES AND PRIVILEGES:
 
 
 Log in with email and password.
@@ -59,7 +59,7 @@ View the borrowing history of the books from their library.
 View the list of students with overdue books from their library along with overdue fine.
 
 
-Student Roles and Functionalities:
+STUDENT ROLES AND PRIVILEGES
 
 
 View the list of all the libraries
@@ -88,7 +88,7 @@ Bookmark a book they are interested in.
 
 View their bookmarked books.
 
-At any given time, a student can borrow a max of 'N' number of books based on their educational level.
+At any given time, a student can borrow a max of 'N' number of books based on their educational level. Maximum number of books (N) that can be borrowed at any given time (Based on their educational level, Undergraduate - 2, Masters - 4, PhD - 6).
 
 View the overdue fines for his/her account.
 
@@ -96,14 +96,13 @@ Receive an email when any of their book request is sucessful.
 
 USE CASES:
 
-If the book is available, proceed to check out:
-
+If the book is available, the student can proceed to check out.
 If the book is in Special Collection list, Librarian's approval list is required and student has to wait.
-Otherwise, add the book to student's checked out list
+Otherwise, the book is added to student's checked out list
 If the book is unavailable or the student has checked out N books already, student is informed that the book is unavailable or max limit reached.
 A book hold request is created if the student wants to continue requesting.
 Number of hold requests is visible to every user
 
-If there is no hold request for a book, the book is returned and the available count of the book is increased
+If there is no hold request for a book, the book is returned and the available count of the book is increased. 
 If there is a pending hold request, the hold request is approved and the book is added to the checked out list of the requested student
-and a mail is sent  to the student that the book is checked out.
+and a mail is sent to the student that the book is checked out.
